@@ -5,25 +5,16 @@ import contacts from "./contacts.json";
 
 const Table = props => {
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Picture</th>
-            <th>Name</th>
-            <th>Popularity</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <img height="200px" src={props.picture} />
-            </td>
-            <td>{props.name}</td>
-            <td>{props.popularity}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className="table">
+      <tbody>
+        <tr>
+          <td>
+            <img height="200px" src={props.picture} />
+          </td>
+          <td>{props.name}</td>
+          <td>{props.popularity}</td>
+        </tr>
+      </tbody>
     </div>
   );
 };
@@ -87,9 +78,11 @@ class Contacts extends React.Component {
             name={el.name}
             popularity={el.popularity}
           />
-          <button onClick={() => this.delete(index)} key={index}>
-            Delete
-          </button>
+          
+            <button onClick={() => this.delete(index)} key={index}>
+              Delete
+            </button>
+          
         </div>
       );
     });
@@ -98,7 +91,17 @@ class Contacts extends React.Component {
         <button onClick={this.AddRandom}>Add Random Contact</button>
         <button onClick={this.sortName}>Sort by Name</button>
         <button onClick={this.sortPopularity}>Sort by Popularity</button>
-        {contactsRender}
+        <table>
+          <thead>
+            <tr>
+              <th>Picture</th>
+              <th>Name</th>
+              <th>Popularity</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          {contactsRender}
+        </table>
       </div>
     );
   }
